@@ -5,6 +5,7 @@ import {lineString as makeLineString} from '@turf/helpers';
 import MapboxDirectionsFactory from '@mapbox/mapbox-sdk/services/directions';
 import SearchScreen from './SearchScreen';
 
+MapboxGL.setWellKnownTileServer('Mapbox');
 
 const accessToken = 'sk.eyJ1Ijoic2VzbW8iLCJhIjoiY2xhdXA3YmtwMDhycjN5bnkyZm1iYmJ2NiJ9.vwwhLPsxEJtMh-daTqua6A';
 
@@ -29,6 +30,14 @@ export default App = () => {
     setPermission(prev=>({ ...prev,isAndroidPermissionGranted:isGranted,isFetchingAndroidPermissin:false}))
   },[])
 
+  const [search, setSearch] = useState({
+    searchKeyword:"",
+    searchItem:"",
+    searchResults:[],
+    coords:[36.791376,-1.312217],
+    isShowingResults:false
+  })
+
   const [permission,setPermission]=useState({
 isAndroidPermissionGranted:isGranted,
 isFetchingAndroidPermissin:false,
@@ -37,12 +46,14 @@ showUserLocation:true,
   })
 
 
+const lat = search.coords && search.coords[0]
+const lng = search.coords && search.coords[1]
 
-
-  const startingPoint = [3.3362400, 6.5790100];
-  const destinationPoint = [ 3.3750014, 6.5367877 ];
+  const startingPoint = [36.791376,-1.312217];
+  const destinationPoint = search.coords
 
   const [route, setRoute] = useState(null);
+console.log([lat,lng])
 
   const startDestinationPoints = [startingPoint,  destinationPoint]
 
@@ -64,6 +75,7 @@ showUserLocation:true,
 
     const newRoute = makeLineString(res.body.routes[0].geometry.coordinates);
     setRoute(newRoute);
+    
   };
 
   const renderAnnotations = () => {
@@ -91,20 +103,21 @@ showUserLocation:true,
   return (
     <View style={{flex: 1, height: "100%", width: "100%" }}>
 <View style={{zIndex:100}}>
-     <SearchScreen/>
+     <SearchScreen search={search} setSearch={setSearch}/>
    </View>
 
       <MapboxGL.MapView
         styleURL={MapboxGL.StyleURL.Street}
-        zoomLevel={11}
+        zoomLevel={12}
         centerCoordinate={startingPoint}
         showUserLocation={true}
         style={{flex: 1}}>
           <MapboxGL.Camera
-            zoomLevel={11}
+            zoomLevel={12}
             centerCoordinate={startingPoint}
             animationMode={'flyTo'}
             animationDuration={0}
+            
           >
           </MapboxGL.Camera>
           {renderAnnotations()}

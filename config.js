@@ -1,7 +1,9 @@
+import { getAuth } from "firebase/auth";
 import firebase from "firebase/compat/app"
 
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
+
 const firebaseConfig = {
     apiKey: "AIzaSyAzeD4vAxUk6Z32btpXxODMZ9765Y_eZNA",
     authDomain: "otptest-6d798.firebaseapp.com",
@@ -14,7 +16,6 @@ const firebaseConfig = {
 if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
 }
-
 
 
 export { firebase };

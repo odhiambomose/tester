@@ -6,8 +6,8 @@ const TestScreen=({navigation})=>{
 
     return(
 <Onboarding
-onSkip={()=>navigation.navigate("home")}
-onDone={()=>navigation.navigate("home")}
+onSkip={()=>navigation.navigate("splash")}
+onDone={()=>navigation.navigate("splash")}
 
 
   pages={[

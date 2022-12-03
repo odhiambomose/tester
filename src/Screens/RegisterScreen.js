@@ -10,50 +10,45 @@ import {
   ScrollView
 } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import { firebase } from "../../config";
+// import { firebase } from "../../config";
+import firestore from '@react-native-firebase/firestore';
+
+import auth from '@react-native-firebase/auth';
+
+
 
 export default function RegisterScreen({ navigation }) {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState('')
-  const [loggedIn, setloggedIn] = useState(false);
-  const [userInfo, setuserInfo] = useState([]);
   const [isSecureEntry,setIsSecureEntry]=useState(true)
+
   const registerUser = async (email, password, fullName) => {
-    await firebase
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then(() => {
-        firebase
-          .auth()
-          .currentUser.sendEmailVerification({
-            handleCodeInApp: true,
-            url: "https://otptest-6d798.firebaseapp.com",
-          })
-          .then(() => {
-            alert("verification sent to the email");
-          })
-          .catch((error) => {
-            alert(error.message);
-          })
-          .then(() => {
-            firebase
-              .firestore()
-              .collection("users")
-              .doc(firebase.auth().currentUser.uid)
-              .set({
-                fullName,
-                email,
-              });
-          })
-          .catch(() => {
-            alert(error.message);
-          });
-      })
-      .catch((error => {
-        alert(error.message);
-      }));
+     const user= auth()
+    .createUserWithEmailAndPassword(email,password,fullName)
+    .then(() => {
+      console.log('User account created');
+      navigation.navigate("")
+    })
+    .catch(error => {
+      if (error.code === 'auth/email-already-in-use') {
+        console.log('That email address is already in use!');
+      }
+  
+      if (error.code === 'auth/invalid-email') {
+        console.log('That email address is invalid!');
+      }
+  
+      console.error(error);
+    });
+
+
+
+
+console.log(user)
+
+
+
   };
   return (
     <View style={styles.container}>

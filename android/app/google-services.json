@@ -1,41 +1,33 @@
 {
   "project_info": {
-    "project_number": "260030010824",
-    "project_id": "auth-4b957",
-    "storage_bucket": "auth-4b957.appspot.com"
+    "project_number": "781015999481",
+    "project_id": "ambucare-a33e3",
+    "storage_bucket": "ambucare-a33e3.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:260030010824:android:f8108c5fcc6f180c201cfd",
+        "mobilesdk_app_id": "1:781015999481:android:de35cf5997c75ae53b5328",
         "android_client_info": {
           "package_name": "com.tester"
         }
       },
       "oauth_client": [
         {
-          "client_id": "260030010824-17vnf8vmm2uqbd5448am5g5ol4632kjc.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.tester",
-            "certificate_hash": "cb1ee37f52b03725bd627ac3d3d0e59d115da95e"
-          }
-        },
-        {
-          "client_id": "260030010824-9a10nhhpm755gbkk5ccb849et6pm1724.apps.googleusercontent.com",
+          "client_id": "781015999481-sd3a67ilabq1lijar98rdsg55s54rsn4.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAXqVyD_bXUT9NEgmH9cplZuyNjyktOYIY"
+          "current_key": "AIzaSyDe-eR3Or3TUVz7vbNT4laf_iU4O9-WxBY"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "260030010824-9a10nhhpm755gbkk5ccb849et6pm1724.apps.googleusercontent.com",
+              "client_id": "781015999481-sd3a67ilabq1lijar98rdsg55s54rsn4.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

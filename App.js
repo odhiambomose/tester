@@ -21,6 +21,8 @@ import ExploreScreen from './src/Screens/ExploreScreen';
 import OnboardingScreen from './src/Screens/OnboardingScreen';
 import GoogleSignIn from './src/Screens/GoogleSignIn';
 import PhoneSignIn from './src/Screens/PhoneSignIn';
+import ChooseScreen from './src/Screens/ChooseScreen';
+import RegisterDriver from './src/Screens/RegisterDriver';
 
 const Drawer = createDrawerNavigator();
 
@@ -40,6 +42,8 @@ const Drawer = createDrawerNavigator();
         <Drawer.Screen name="phone" component={PhoneSignIn} />
         <Drawer.Screen name="splash" component={Splash} />
         <Drawer.Screen name="google" component={GoogleSignIn} />
+        <Drawer.Screen name="Choose" component={ChooseScreen} />
+
 
 
 
@@ -62,7 +66,22 @@ function App() {
   return (
     <NavigationContainer>
     <Stack.Navigator screenOptions={{headerShown:false}}>
-    <Stack.Screen name="Splash" component={Splash} />
+    <Stack.Screen name="Test" component={TestScreen} />
+    <Stack.Screen name="splash" component={Splash} />
+
+    <Stack.Screen name="Choose" component={ChooseScreen} />
+    <Stack.Screen name="Register" component={RegisterScreen} />
+    <Stack.Screen name="Login" component={LoginScreen} />
+    <Stack.Screen name="Booking" component={RegisteringAmbulanceScreen} />
+    <Stack.Screen name="Driver" component={RegisterDriver} />
+    <Stack.Screen name="Profile" component={ProfileScreen} />
+
+
+
+
+
+
+
 
       <Stack.Screen name="home" component={DrawerNext} />
     </Stack.Navigator>

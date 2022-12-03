@@ -1,6 +1,6 @@
 
 
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 import {
   View,
@@ -12,12 +12,23 @@ import {
   SafeAreaView,
   
 } from 'react-native';
-const SearchScreen =()=> {
+const SearchScreen =({search, setSearch})=> {
 
-  const [search, setSearch] = useState({
-    searchKeyword:"",
-    isShowingResults:false
-  })
+      
+
+  const handleSelection = (p)=>{
+    setSearch(prev=>({
+      ...prev,
+      searchItem:p.item.place_name,
+      isShowingResults:false
+    }))
+
+
+setSearch(prev=>({...prev, coords:p.item.geometry.coordinates}))
+  
+
+    
+  }
 
   
   const searchLocation = async (text) => {
@@ -29,12 +40,14 @@ const SearchScreen =()=> {
       
 
             };
+
+            
     
     
   
 
 
-  
+  // console.log(search.searchResults.features)
     return (
 
       <SafeAreaView style={styles.container}>
@@ -54,8 +67,7 @@ const SearchScreen =()=> {
             style={styles.searchBox}
             placeholderTextColor="#000"
             onChangeText={(text) => searchLocation(text)}
-            value={search.searchKeyword}
-
+            defaultValue={search.searchItem}
           />
 
 
@@ -66,17 +78,11 @@ const SearchScreen =()=> {
                 return (
                   <TouchableOpacity
                     style={styles.resultItem}
-                    onPress={() =>
-                      setSearch(prev=>({
-                        ...prev,
-                        searchKeyword:item.place_name,
-                        isShowingResults:false
-                      }))
-                      
-                    }>
+                    onPress={() =>handleSelection(item) }>
+                      {console.log(search.searchKeyword)}
                       <Text>{item.item.place_name}</Text>
 
-                      {console.log(item)}
+                    
                
                   </TouchableOpacity>
                 );
@@ -111,7 +117,7 @@ const styles = StyleSheet.create({
     height: 200,
     backgroundColor: '#fff',
     position: 'absolute',
-    top: 50,
+    top: 120,
   },
   // dummmy: {
   //   width: 600,
