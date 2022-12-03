@@ -23,13 +23,17 @@ import GoogleSignIn from './src/Screens/GoogleSignIn';
 import PhoneSignIn from './src/Screens/PhoneSignIn';
 import ChooseScreen from './src/Screens/ChooseScreen';
 import RegisterDriver from './src/Screens/RegisterDriver';
+import Bottom from './src/Screens/Bottom';
+import AmbulanceContext, { Context } from './src/context/AmbulanceContext';
+
 
 const Drawer = createDrawerNavigator();
 
  function DrawerNext() {
   return (
     
-      <Drawer.Navigator initialRouteName="Home">
+        <AmbulanceContext>
+    <Drawer.Navigator initialRouteName="Home">
         <Drawer.Screen name="Home" component={HomeScreen} />
         <Drawer.Screen name="Profile" component={ProfileScreen} />
         <Drawer.Screen name="FirstAid" component={FirstAidScreen} />
@@ -43,6 +47,7 @@ const Drawer = createDrawerNavigator();
         <Drawer.Screen name="splash" component={Splash} />
         <Drawer.Screen name="google" component={GoogleSignIn} />
         <Drawer.Screen name="Choose" component={ChooseScreen} />
+        <Drawer.Screen name="bottom" component={Bottom} />
 
 
 
@@ -56,9 +61,12 @@ const Drawer = createDrawerNavigator();
 
         {/* <Drawer.Screen name="Notifications" component={NotificationsScreen} /> */}
       </Drawer.Navigator>
+        </AmbulanceContext>
+      
+      
+
   );
 }
-
 
 const Stack = createStackNavigator();
 
@@ -75,6 +83,7 @@ function App() {
     <Stack.Screen name="Booking" component={RegisteringAmbulanceScreen} />
     <Stack.Screen name="Driver" component={RegisterDriver} />
     <Stack.Screen name="Profile" component={ProfileScreen} />
+    <Stack.Screen name="bottom" component={Bottom} />
 
 
 

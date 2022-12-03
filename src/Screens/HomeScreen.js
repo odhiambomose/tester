@@ -1,9 +1,18 @@
-import React, {useState, useEffect } from "react";
+import React, {useState, useEffect,useContext } from "react";
 import { View } from "react-native";
 import MapboxGL from "@rnmapbox/maps";
 import {lineString as makeLineString} from '@turf/helpers';
 import MapboxDirectionsFactory from '@mapbox/mapbox-sdk/services/directions';
+// import Geolocation from '@react-native-community/geolocation';
+// import { PermissionsAndroid } from 'react-native';
+import Geolocation from "@react-native-community/geolocation";
+
+
+
 import SearchScreen from './SearchScreen';
+import Bottom from "./Bottom";
+import { Context } from '../context/AmbulanceContext';
+
 
 MapboxGL.setWellKnownTileServer('Mapbox');
 
@@ -13,22 +22,13 @@ MapboxGL.setAccessToken(accessToken);
 
 const directionsClient = MapboxDirectionsFactory({accessToken});
 
-export default App = () => {
+export default HomeScreen = () => {
 
-  const IS_ANDROID=Platform.OS==="android"
-  
-  let isGranted
+  const {visible}=useContext(Context);
+  const [isVisible, setVisible]=visible
 
-  useEffect(()=>{
-    (async()=>{
-  if(IS_ANDROID){
-     isGranted=await MapboxGL.requestAndroidLocationPermissions();
-  
-  }
-    })()
 
-    setPermission(prev=>({ ...prev,isAndroidPermissionGranted:isGranted,isFetchingAndroidPermissin:false}))
-  },[])
+
 
   const [search, setSearch] = useState({
     searchKeyword:"",
@@ -38,12 +38,9 @@ export default App = () => {
     isShowingResults:false
   })
 
-  const [permission,setPermission]=useState({
-isAndroidPermissionGranted:isGranted,
-isFetchingAndroidPermissin:false,
-showUserLocation:true,
 
-  })
+
+
 
 
 const lat = search.coords && search.coords[0]
@@ -53,14 +50,17 @@ const lng = search.coords && search.coords[1]
   const destinationPoint = search.coords
 
   const [route, setRoute] = useState(null);
-console.log([lat,lng])
+// console.log([lat,lng])
 
   const startDestinationPoints = [startingPoint,  destinationPoint]
 
   useEffect(() => {
     fetchRoute();
   })
-  
+
+  // useEffect(()=>{
+  //   if 
+  // })  
   const fetchRoute = async () => {
     const reqOptions = {
       waypoints: [
@@ -129,11 +129,17 @@ console.log([lat,lng])
           )
         }
 
-<MapboxGL.UserLocation>
+<MapboxGL.UserLocation 
+visible={true}
+animated={true}
+/>
 
-</MapboxGL.UserLocation>
 
       </MapboxGL.MapView>
+
+      {isVisible && (
+        <Bottom/>
+      )}
     </View>
   )
 }
