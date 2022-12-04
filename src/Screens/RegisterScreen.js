@@ -28,7 +28,8 @@ export default function RegisterScreen({ navigation }) {
     .createUserWithEmailAndPassword(email,password,fullName)
     .then(() => {
       console.log('User account created');
-      navigation.navigate("")
+      navigation.navigate("Login")
+      alert("Succesfully Registered")
     })
     .catch(error => {
       if (error.code === 'auth/email-already-in-use') {
@@ -53,9 +54,9 @@ console.log(user)
   return (
     <View style={styles.container}>
 
-<View style={styles.login} >
+{/* <View style={styles.login} >
                         <Text style={{color:"white"}}>PLEASE CREATE AN ACCOUNT...</Text>
-                    </View>
+                    </View> */}
 
 <View>
 <Image
@@ -104,7 +105,7 @@ console.log(user)
 style={styles.touchable}
             
             >
-              <Text>{isSecureEntry?"Hide":"Show"}</Text>
+              <Text>{isSecureEntry?"Show":"Hide"}</Text>
             </TouchableOpacity>
 </View>
         <TouchableOpacity

@@ -6,7 +6,6 @@ import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
 
 
-
 const RegisterDriver = () => {
 
   const [formData,setFormData]=useState({
@@ -117,7 +116,7 @@ return (
 
 
 <TouchableOpacity
-          // style={styles.button}
+          style={styles.button}
           onPress={register}
         >
           <Text style={styles.buttonTitle}>Submit</Text>
@@ -157,7 +156,7 @@ const styles = StyleSheet.create({
   },
 
   buttonTitle:{
-    color:"red"
+    color:"white"
   },
   block:{
     backgroundColor:"#EC0921",

@@ -7,40 +7,24 @@ import {
   Text,
   TouchableRipple,
 } from 'react-native-paper';
-import { getAuth } from 'firebase/auth';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
+import { firebase } from '@react-native-firebase/firestore';
 
-
-const auth = getAuth();
 const Profilescreen = () => {
 
 
-  const user = auth.currentUser;
-  if (user !== null) {
-    console.log(user)
-    // The user object has basic properties such as display name, email, etc.
-    // const displayName = user.displayName;
-    // const email = user.email;
-    // const emailVerified = user.emailVerified;
   
-    
-    // const uid = user.uid;
-
-    // console.log(email)
-  }
-  else{
-    console.log("No user found")
-  }
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      console.log('User email: ', user.email);
+    }
+  });
 
 
   const myCustomShare = async() => {
-    const shareOptions = {
-      message: 'Order your next meal from FoodFinder App. I\'ve already ordered more than 10 meals on it.',
-      url: files.appLogo,
-      // urls: [files.image1, files.image2]
-    }
+   
 
     try {
       const ShareResponse = await Share.open(shareOptions);

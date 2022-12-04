@@ -7,7 +7,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import HomeScreen from './src/Screens/HomeScreen';
-import ProfileScreen from './src/Screens/ProfileScreen';
+import Profilescreen from './src/Screens/Profilescreen';
 import FirstAidScreen from './src/Screens/FirstAidScreen';
 import RegisterScreen from './src/Screens/RegisterScreen';
 import LoginScreen from './src/Screens/LoginScreen';
@@ -35,7 +35,7 @@ const Drawer = createDrawerNavigator();
         <AmbulanceContext>
     <Drawer.Navigator initialRouteName="Home">
         <Drawer.Screen name="Home" component={HomeScreen} />
-        <Drawer.Screen name="Profile" component={ProfileScreen} />
+        <Drawer.Screen name="Profile" component={Profilescreen} />
         <Drawer.Screen name="FirstAid" component={FirstAidScreen} />
         <Drawer.Screen name="Register" component={RegisterScreen} />
         <Drawer.Screen name="Login" component={LoginScreen} />
@@ -82,7 +82,7 @@ function App() {
     <Stack.Screen name="Login" component={LoginScreen} />
     <Stack.Screen name="Booking" component={RegisteringAmbulanceScreen} />
     <Stack.Screen name="Driver" component={RegisterDriver} />
-    <Stack.Screen name="Profile" component={ProfileScreen} />
+    <Stack.Screen name="Profile" component={Profilescreen} />
     <Stack.Screen name="bottom" component={Bottom} />
 
 

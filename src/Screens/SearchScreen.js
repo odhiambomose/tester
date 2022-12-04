@@ -67,7 +67,7 @@ const [isVisible, setVisible]=visible
           style={styles.searchBox}
           placeholder="From"
           placeholderTextColor="#000"
-
+defaultValue='Nairobi,Mashimoni,Magoso'
         />
         <TextInput
           placeholder="To"

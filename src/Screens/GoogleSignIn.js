@@ -41,7 +41,7 @@ console.log(error)
   
 <View>
 <GoogleSigninButton
-  style={{ width: 200, height: 48 }}
+  style={{ width: 355, height: 50 }}
   size={GoogleSigninButton.Size.Wide}
   color={GoogleSigninButton.Color.Dark}
   onPress={() => onGoogleButtonPress().then(() => console.log('Signed in with Google!'))}

@@ -17,7 +17,8 @@ const LoginScreen = ({ navigation }) => {
         .signInWithEmailAndPassword(email, password)
         .then(() => {
           console.log('signed in!');
-          navigation.navigate("Driver")
+          navigation.navigate("Choose")
+          alert("Successfully Loged in")
 
         })
         .catch(error => {
@@ -37,9 +38,9 @@ const LoginScreen = ({ navigation }) => {
         // <View>
 
             <View style={styles.container}>
-                <View style={styles.login} >
+                {/* <View style={styles.login} >
                         <Text style={{color:"white"}}>WELCOME BACK...</Text>
-                    </View>
+                    </View> */}
                 <View>
                     <Image
                         style={styles.stretch}
@@ -78,7 +79,7 @@ const LoginScreen = ({ navigation }) => {
 style={styles.touchable}
             
             >
-              <Text>{isSecureEntry?"Hide":"Show"}</Text>
+              <Text>{isSecureEntry?"Show":"Hide"}</Text>
             </TouchableOpacity>
 
                     </View>
@@ -87,11 +88,15 @@ style={styles.touchable}
                         onPress={() => loginUser(email, password)}>
                         <Text style={styles.buttonTitle}>Log in</Text>
                     </TouchableOpacity>
+
+                    <Text style={{alignSelf:"center",fontWeight:"bold",marginTop:10}}>OR</Text>
+                   
+                    <View style={{marginTop:10,alignSelf:"center"}}>
+                        <GoogleSignIn/>
+                    </View>
+
                     <View style={styles.footerView}>
                         <Text style={styles.footerText}>Don't have an account? <Text onPress={() => navigation.navigate("Register")} style={styles.footerLink}>Sign up</Text></Text>
-                    </View>
-                    <View style={{marginLeft:95}}>
-                        <GoogleSignIn/>
                     </View>
 
 

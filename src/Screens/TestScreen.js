@@ -21,14 +21,14 @@ onDone={()=>navigation.navigate("splash")}
     {
         backgroundColor: '#fff',
         image: <Image source={require('../../assets/location.png')} style={styles.caro} />,
-        title: 'Onboarding',
-        subtitle: 'Done with React Native Onboarding Swiper',
+        title: 'Transport',
+        subtitle: 'Affordable and fast Ambulance',
       },
       {
         backgroundColor: '#fff',
         image: <Image source={require('../../assets/service.png')} style={styles.caro} />,
-        title: 'Onboarding',
-        subtitle: 'Done with React Native Onboarding Swiper',
+        title: 'Proper understanding',
+        subtitle: 'Fast response to our clients',
       },
 
   ]}

@@ -32,9 +32,8 @@ const Splash = ({navigation}) => {
         >
             <Text style={[styles.title, {
             }]}>Stay connected with Ambucare!</Text>
-            <Text style={styles.text}>Sign in with account</Text>
             <View style={styles.button}>
-            <TouchableOpacity onPress={()=>navigation.navigate("Choose")}>
+            <TouchableOpacity onPress={()=>navigation.navigate("Register")}>
                 <LinearGradient
                     colors={['#EC0921', '#EC0921']}
                     style={styles.signIn}

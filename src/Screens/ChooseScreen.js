@@ -9,7 +9,7 @@ const ChooseScreen=({navigation})=>{
 <View style={{flex:1,justifyContent:"center"}}>
     <TouchableOpacity
     style={styles.button}
-    onPress={()=>navigation.navigate("Register")}
+    onPress={()=>navigation.navigate("Driver")}
 
     >
 <Text style={{color:"white"}}>Register as a Driver</Text>
